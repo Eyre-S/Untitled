@@ -40,7 +40,7 @@ public class ThreeOrderRubikCube {
 		
 	}
 	
-	private ThreeOrderRubikCube () {};
+	private ThreeOrderRubikCube () {}
 	
 	public static ThreeOrderRubikCube getDefault () {
 		ThreeOrderRubikCube cube = new ThreeOrderRubikCube();
@@ -171,6 +171,60 @@ public class ThreeOrderRubikCube {
 	
 	public void turnBack() { turnBackOpp();turnBackOpp();turnBackOpp(); }
 	
+	public void turnCentralHorizontalOpp() {
+		CubeColor[] turned = turnThree(new CubeColor[]{front.face[8], front.face[0], front.face[4], right.face[8], right.face[0], right.face[4], back.face[8], back.face[0], back.face[4], left.face[8], left.face[0], left.face[4]});
+		front.face[8] = turned[0];
+		front.face[0] = turned[1];
+		front.face[4] = turned[2];
+		right.face[8] = turned[3];
+		right.face[0] = turned[4];
+		right.face[4] = turned[5];
+		back .face[8] = turned[6];
+		back .face[0] = turned[7];
+		back .face[4] = turned[8];
+		left .face[8] = turned[9];
+		left .face[0] = turned[10];
+		left .face[4] = turned[11];
+	}
+	
+	public void turnCentralHorizontal() { turnCentralHorizontalOpp();turnCentralHorizontalOpp();turnCentralHorizontalOpp(); }
+	
+	public void turnCentralVerticalOpp() {
+		CubeColor[] turned = turnThree(new CubeColor[]{front.face[2], front.face[0], front.face[6], down.face[2], down.face[0], down.face[6], back.face[6], back.face[0], back.face[2], up.face[2], up.face[0], up.face[6]});
+		front.face[2] = turned[0];
+		front.face[0] = turned[1];
+		front.face[6] = turned[2];
+		down.face[2] = turned[3];
+		down.face[0] = turned[4];
+		down.face[6] = turned[5];
+		back.face[6] = turned[6];
+		back.face[0] = turned[7];
+		back.face[2] = turned[8];
+		up.face[2] = turned[9];
+		up.face[0] = turned[10];
+		up.face[6] = turned[11];
+	}
+	
+	public void turnCentralVertical() { turnCentralVerticalOpp();turnCentralVerticalOpp();turnCentralVerticalOpp(); }
+	
+	public void turnCentralInsiderOpp() {
+		CubeColor[] turned = turnThree(new CubeColor[]{up.face[8], up.face[0], up.face[4], right.face[2], right.face[0], right.face[6], down.face[4], down.face[0], down.face[8], left.face[6], left.face[0], left.face[2]});
+		up.face[8] = turned[0];
+		up.face[0] = turned[1];
+		up.face[4] = turned[2];
+		right.face[2] = turned[3];
+		right.face[0] = turned[4];
+		right.face[6] = turned[5];
+		down.face[4] = turned[6];
+		down.face[0] = turned[7];
+		down.face[8] = turned[8];
+		left.face[6] = turned[9];
+		left.face[0] = turned[10];
+		left.face[2] = turned[11];
+	}
+	
+	public void turnCentralInsider() { turnCentralInsiderOpp();turnCentralInsiderOpp();turnCentralInsiderOpp(); }
+	
 	public void simulate (String law) {
 		char last = '-';
 		for (int u = 0; u < law.length() + 1; u++) {
@@ -197,6 +251,15 @@ public class ThreeOrderRubikCube {
 						case 'B':
 							turnBackOpp();
 							break;
+						case 'H':
+							turnCentralHorizontalOpp();
+							break;
+						case 'V':
+							turnCentralVerticalOpp();
+							break;
+						case 'I':
+							turnCentralInsiderOpp();
+							break;
 					}
 				} else {
 					switch (last) {
@@ -217,6 +280,15 @@ public class ThreeOrderRubikCube {
 							break;
 						case 'B':
 							turnBack();
+							break;
+						case 'H':
+							turnCentralHorizontal();
+							break;
+						case 'V':
+							turnCentralVertical();
+							break;
+						case 'I':
+							turnCentralInsider();
 							break;
 					}
 				}

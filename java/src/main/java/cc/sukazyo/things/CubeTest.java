@@ -4,14 +4,14 @@ import cc.sukazyo.util.StringUtils;
 
 public class CubeTest {
 	
-	public static void main (String[] args) throws InterruptedException {
-		resolve("RU'");
-		resolve("RU'RURURU'R'U'RR");
-		resolve("RRDDR'U'RDDR'UR'");
-		resolve("RU'R'U'");
-		resolve("RU'R'");
-		resolve("RRDDLLUU");
-		resolve("RULD");
+	public static void main (String[] args) {
+//		resolve("RU'");
+//		resolve("RU'RURURU'R'U'RR");
+//		resolve("RRDDR'U'RDDR'UR'");
+//		resolve("RU'R'U'");
+//		resolve("RU'R'");
+//		resolve("RRDDLLUU");
+//		resolve("RULD");
 //		resolve("RU");
 //		resolve("LD");
 //		resolve("UF");
@@ -24,9 +24,24 @@ public class CubeTest {
 //		resolve("D'F");
 //		resolve("F'R'");
 //		resolve("B'R");
-//		ThreeOrderRubikCube cube = ThreeOrderRubikCube.getDefault();
-//		cube.simulate("R");
-//		cube.echoState();
+		resolve("V'U'");
+		resolve("HV");
+		resolve("I'LU'");
+//		{
+//			ThreeOrderRubikCube cube = ThreeOrderRubikCube.getDefault();
+//			cube.turnCentralHorizontal();
+//			cube.echoState();
+//		}
+//		{
+//			ThreeOrderRubikCube cube = ThreeOrderRubikCube.getDefault();
+//			cube.turnCentralVertical();
+//			cube.echoState();
+//		}
+//		{
+//			ThreeOrderRubikCube cube = ThreeOrderRubikCube.getDefault();
+//			cube.turnCentralInsider();
+//			cube.echoState();
+//		}
 	}
 	
 	public static void resolve (String law) {
