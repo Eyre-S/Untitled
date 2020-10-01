@@ -53,7 +53,7 @@ public class ThreeOrderRubikCube {
 		return cube;
 	}
 	
-	boolean isOK () {
+	public boolean isOK() {
 		return front.isOk() && up.isOk() && down.isOk() && back.isOk() && right.isOk() && left.isOk();
 	}
 	
