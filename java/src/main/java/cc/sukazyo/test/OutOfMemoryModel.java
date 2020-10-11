@@ -62,7 +62,8 @@ public class OutOfMemoryModel {
 	
 	@SuppressWarnings("all")
 	public static void main (String[] args) {
-		
+
+		/*
 		// 开启OOM处理线程
 		GCOOMCollection thr = new GCOOMCollection();
 		thr.start();
@@ -72,7 +73,32 @@ public class OutOfMemoryModel {
 			TestIt a = new TestIt();
 			a.start();
 		}
-		
+		 */
+		heapspaceOOM(false);
+	}
+
+	public static void arrayOOM(boolean falsetostart) {
+		if (falsetostart) return;
+		long t = System.currentTimeMillis();
+		try {
+			int[] list = new int[Integer.MAX_VALUE];
+		} catch (OutOfMemoryError e) {
+			System.out.println("OOM! Time used: " + (System.currentTimeMillis() - t) + " ms");
+			e.printStackTrace();
+		}
+	}
+
+	public static void heapspaceOOM(boolean falsetostart) {
+		if (falsetostart) return;
+		long t = System.currentTimeMillis();
+		try {
+			while (true) {
+				int[] list = new int[Integer.MAX_VALUE - 5];
+			}
+		} catch (OutOfMemoryError e) {
+			System.out.println("OOM! Time used: " + (System.currentTimeMillis() - t) + " ms");
+			e.printStackTrace();
+		}
 	}
 	
 }
