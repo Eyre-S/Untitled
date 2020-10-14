@@ -1,0 +1,23 @@
+.root {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-color: #73e2ff;
+    -fx-background-radius: 150;
+    -fx-font: bold 15px "'Century Gothic', 'Noto Sans CJK SC', '苹方', 'Microsoft YaHei', sans-serif";
+    -fx-padding: 10px 15px;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, #aaaaaa, 10.0,0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-radius: 2;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, #aaaaaa, 3.0,0, 0, 0);
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 3px;
+}

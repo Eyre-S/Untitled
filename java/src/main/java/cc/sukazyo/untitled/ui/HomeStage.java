@@ -18,6 +18,8 @@ public class HomeStage {
 	public Stage stage;
 	private AnchorPane root;
 	
+	private Thread simulationThread;
+	
 	@FXML
 	private TextField inputLaw;
 	
@@ -28,31 +30,41 @@ public class HomeStage {
 	private Label labelNumber;
 	
 	@FXML
+	@SuppressWarnings("all")
 	private void buttonStartActive () {
-		buttonStart.setDisable(true);
-		inputLaw.setDisable(true);
-		new Thread(() -> {
-			ThreeOrderRubikCube cube = ThreeOrderRubikCube.getDefault();
-			int i = 0;
-			do {
-				cube.simulate(inputLaw.getText());
-				i++;
-				int finalI = i;
+		if (simulationThread != null && simulationThread.isAlive()) {
+			simulationThread.stop();
+			inputLaw.setDisable(false);
+			labelNumber.setStyle("-fx-text-fill: lightpink");
+			buttonStart.setText("Start Simulation");
+		} else {
+			buttonStart.setText("Stop");
+			inputLaw.setDisable(true);
+			labelNumber.setStyle("-fx-text-fill: darkslategray");
+			simulationThread = new Thread(() -> {
+				ThreeOrderRubikCube cube = ThreeOrderRubikCube.getDefault();
+				int i = 0;
+				do {
+					cube.simulate(inputLaw.getText());
+					i++;
+					int finalI = i;
+					Platform.runLater(() -> labelNumber.setText(String.valueOf(finalI)));
+					StringUtils.deleteChars(String.valueOf(i).length());
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				} while (!cube.isOK());
 				Platform.runLater(() -> {
-					labelNumber.setText(String.valueOf(finalI));
+					buttonStart.setDisable(false);
+					inputLaw.setDisable(false);
+					labelNumber.setStyle("-fx-text-fill: mediumaquamarine");
+					buttonStart.setText("Start Simulation");
 				});
-				StringUtils.deleteChars(String.valueOf(i).length());
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			} while (!cube.isOK());
-			Platform.runLater(() -> {
-				buttonStart.setDisable(false);
-				inputLaw.setDisable(false);
 			});
-		}).start();
+			simulationThread.start();
+		}
 	}
 	
 	public void load () {
