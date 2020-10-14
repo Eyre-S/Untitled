@@ -1,0 +1,44 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#bg {
+	position: absolute;
+	filter: blur(16px);
+	z-index: -10;
+    transition-duration: 1s;
+	transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+#covery {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+	background-color: #fff;
+}
+
+.section {
+	text-align: center;
+}
+
+#title {
+	white-space:nowrap;
+	font-size: 10vh;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-family:"Olivia";
+	color: #1c1c1c;
+}
+
+@font-face {
+	font-family: 'Olivia';
+	/** 使用了 SukWs 源作为字体加载源 */
+	src: url('https://srv.sukazyo.cc/assets/font/Olivia-Regular.ttf');
+}
