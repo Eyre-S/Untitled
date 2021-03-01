@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sukazyo.Untitled", "Sukazyo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sukazyo.Untitled.ConsoleApp", "Sukazyo.Untitled.ConsoleApp\Sukazyo.Untitled.ConsoleApp.csproj", "{AEE2C3A4-E897-41A3-86F9-A8A3C747B488}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sukazyo.Untitled.Tests", "Sukazyo.Untitled.Tests\Sukazyo.Untitled.Tests.csproj", "{FCAB0FF2-020E-4614-8796-C6F7B928E7FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sukazyo.Untitled.ColorPatternGUI", "Sukazyo.Untitled.ColorPatternGUI\Sukazyo.Untitled.ColorPatternGUI.csproj", "{FED80286-9109-4A1C-A8B6-5B8585E6F9CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{AEE2C3A4-E897-41A3-86F9-A8A3C747B488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEE2C3A4-E897-41A3-86F9-A8A3C747B488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEE2C3A4-E897-41A3-86F9-A8A3C747B488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCAB0FF2-020E-4614-8796-C6F7B928E7FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAB0FF2-020E-4614-8796-C6F7B928E7FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAB0FF2-020E-4614-8796-C6F7B928E7FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAB0FF2-020E-4614-8796-C6F7B928E7FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED80286-9109-4A1C-A8B6-5B8585E6F9CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED80286-9109-4A1C-A8B6-5B8585E6F9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED80286-9109-4A1C-A8B6-5B8585E6F9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED80286-9109-4A1C-A8B6-5B8585E6F9CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

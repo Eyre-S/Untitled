@@ -1,9 +1,13 @@
-using System;
 using System.Globalization;
 
 namespace Sukazyo.Untitled.ColorPattern {
 
 	public class RGB {
+		
+		public static readonly byte SingleMin = 0;
+		public static readonly byte SingleMax = 255;
+		public static readonly int IntMin = new RGB(SingleMin, SingleMin, SingleMin).ToInt();
+		public static readonly int IntMax = new RGB(SingleMax, SingleMax, SingleMax).ToInt();
 
 		public byte Red { get; }
 		public byte R => Red;
@@ -28,7 +32,7 @@ namespace Sukazyo.Untitled.ColorPattern {
 
 		public static RGB FromHex (string hexStr) {
 			if (hexStr.StartsWith('#')) {
-				hexStr = hexStr.Substring(1);
+				hexStr = hexStr[1..];
 			}
 			return FromInt(int.Parse(hexStr, NumberStyles.HexNumber));
 		}
@@ -37,14 +41,22 @@ namespace Sukazyo.Untitled.ColorPattern {
 			return (Red<<16)|(Green<<8)|Blue;
 		}
 
-		public String ToHex () {
-			return $"#{ToInt().ToString("x6")}";
+		public string ToHex () {
+			return "#"+ToInt().ToString("x6");
 		}
 
-		public override String ToString () {
+		public override string ToString () {
 			return $"rgb({Red}, {Green}, {Blue})";
 		}
 
-	}
+		public override bool Equals (object obj) {
+			return obj != null && obj.GetType() == typeof(RGB) && ((RGB) obj).R == R && ((RGB) obj).G == G && ((RGB) obj).B == B;
+		}
 
+		public override int GetHashCode () {
+			return ("Sukazyo.Untitled.ColorPattern.RGB"+ToHex()).GetHashCode();
+		}
+
+	}
+	
 }
