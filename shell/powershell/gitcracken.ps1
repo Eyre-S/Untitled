@@ -28,7 +28,7 @@ if ( Test-Path ./GitCracken ) {
 	git pull;
 } else {
 	Write-Host "@= ³õÊ¼»¯GitCracken´¢´æ¿â" -ForegroundColor blue;
-	git clone https://github.com/5cr1pt/GitCracken.git;
+	git clone https://github.com/PMExtra/GitCracken.git;
 	Set-Location ./GitCracken;
 }
 Set-Location ./GitCracken;
