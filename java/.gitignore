@@ -6,7 +6,9 @@
 # build
 /build/
 /bin/
+/out/
 .project
 
 # debug
 /src/test/*
+/run/
