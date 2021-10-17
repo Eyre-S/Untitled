@@ -1,8 +1,6 @@
 buildscript {
     repositories {
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/groups/public/'
-        }
+        mavenCentral()
     }
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:5.0.0'
@@ -18,20 +16,35 @@ version '0.0'
 
 repositories {
     mavenCentral()
+    maven { name 'github'; url 'https://jitpack.io' }
+}
+
+dependencies {
+    
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitJupiterVersion
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junitJupiterVersion
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitJupiterVersion
+    
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+    options.docEncoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'application'
 
 shadowJar {
-    mainClassName = 'cc.sukazyo.untitled.ui.FXApplication'
-    archiveFileName = 'Untitled-test.jar'
+    mainClassName = 'cc.sukazyo.untitled.UntitledCLI'
+    archiveFileName = 'Untitled.jar'
 }

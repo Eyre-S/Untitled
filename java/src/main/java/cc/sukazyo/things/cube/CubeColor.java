@@ -1,4 +1,4 @@
-package cc.sukazyo.things;
+package cc.sukazyo.things.cube;
 
 public enum CubeColor {
 	WHITE, RED, GREEN, BLUE, PINK, YELLOW,

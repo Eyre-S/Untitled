@@ -1,5 +1,6 @@
-package cc.sukazyo.things;
+package cc.sukazyo.things.cube;
 
+@SuppressWarnings("unused")
 public class ThreeOrderRubikCube {
 	
 	Face front;
@@ -51,6 +52,16 @@ public class ThreeOrderRubikCube {
 		cube.right = new Face(CubeColor.PINK);
 		cube.left = new Face(CubeColor.RED);
 		return cube;
+	}
+	
+	public static int calcLawCyclePeriod (String law) {
+		ThreeOrderRubikCube cube = ThreeOrderRubikCube.getDefault();
+		int i = 0;
+		do {
+			cube.simulate(law);
+			i++;
+		} while (!cube.isOK());
+		return i;
 	}
 	
 	public boolean isOK() {
