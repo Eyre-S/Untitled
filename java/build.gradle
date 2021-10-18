@@ -25,6 +25,10 @@ dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junitJupiterVersion
     testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitJupiterVersion
     
+    compile group: 'com.github.Eyre-S', name: 'ResourceTools', version: '0.2.2'
+    compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.13'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+    
 }
 
 tasks.withType(JavaCompile) {

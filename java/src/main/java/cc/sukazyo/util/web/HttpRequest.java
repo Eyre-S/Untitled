@@ -9,6 +9,10 @@ import java.net.URL;
 public class HttpRequest {
 	
 	public static HttpResponse sendGetRequest (String url, WebCommonUserAgent userAgent) throws IOException {
+		return sendGetRequest(url, userAgent, true);
+	}
+	
+	public static HttpResponse sendGetRequest (String url, WebCommonUserAgent userAgent, boolean parseCookies) throws IOException {
 		
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -23,7 +27,10 @@ public class HttpRequest {
 		response.date = con.getDate();
 		response.contentType = con.getContentType();
 		response.contentEncoding = con.getContentEncoding();
-		response.cookies = HttpCookies.matchCookiesFromHeader(con.getHeaderFields());
+		if (parseCookies)
+			response.cookies = HttpCookies.matchCookiesFromHeader(con.getHeaderFields());
+		else
+			response.cookies = new HttpCookies();
 		response.header = con.getHeaderFields();
 		
 		{
