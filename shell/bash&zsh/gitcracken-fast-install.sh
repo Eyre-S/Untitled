@@ -12,6 +12,11 @@ if (( ! $+commands[yarn] )) {
 	exit
 }
 
+if (( ! $+commands[sudo] )) {
+	print -P "%B%F{red}@= ERROR%b 缺失 sudo%f"
+	exit
+}
+
 print -P "%B%F{blue}@= 检查更新中%b%f"
 if [[ -d ./GitCracken ]] {
 	cd GitCracken
