@@ -1,0 +1,24 @@
+plugins {
+	id 'application'
+	id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+
+mainClassName = 'cc.sukazyo.cono.morny.ServerMain'
+project.ext.archiveBaseName = 'Untitled_CLI'
+
+dependencies {
+	
+	api project(":cmn")
+	
+	implementation project(":util-simple-http")
+	implementation project(":rubik-cube-simulator")
+	
+	api project(":util-string-commons")
+	
+}
+
+shadowJar {
+	archiveBaseName.set("${project.ext.archiveBaseName}")
+	archiveVersion.set("${project.version}")
+	archiveClassifier.set("fat")
+}

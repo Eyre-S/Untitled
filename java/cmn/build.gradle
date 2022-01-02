@@ -1,0 +1,5 @@
+dependencies {
+	
+	api "cc.sukazyo:resource-tools:0.2.2"
+	
+}

@@ -1,0 +1,8 @@
+dependencies {
+	
+	api project(":cmn")
+	
+	implementation "org.jsoup:jsoup:1.14.3"
+	implementation project(":util-simple-http")
+	
+}

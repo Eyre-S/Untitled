@@ -1,2 +1,8 @@
 rootProject.name = 'Untitled'
+include 'cli'
+include 'rubik-cube-simulator'
+include 'util-simple-http'
+include 'util-string-commons'
+include 'random'
+include 'cmn'
 

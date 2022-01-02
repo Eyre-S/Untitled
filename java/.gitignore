@@ -2,11 +2,16 @@
 # IDE
 .idea/
 .gradle/
+.settings/
+.vscode/
 
 # build
-/build/
+/build
+*/build/
 /bin/
+*/bin/
 /out/
+*/out/
 .project
 
 # debug
