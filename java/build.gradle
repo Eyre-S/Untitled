@@ -19,8 +19,12 @@ allprojects {
 	}
 	
 	dependencies {
+		
+		compileOnlyApi "com.github.spotbugs:spotbugs-annotations:${libSpotbugsVersion}"
+		
 		testImplementation platform("org.junit:junit-bom:${libJunitVersion}")
 		testImplementation 'org.junit.jupiter:junit-jupiter'
+		
 	}
 	
 	tasks.withType(JavaCompile) {
