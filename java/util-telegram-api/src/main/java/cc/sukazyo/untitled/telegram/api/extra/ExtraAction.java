@@ -49,7 +49,7 @@ public class ExtraAction {
 	}
 	
 	public boolean isUserInGroup (long userId, long chatId, Status permissionLevel) {
-		final ChatMember chatMember = bot.execute(new GetChatMember(chatId, userId)).chatMember();
+		final ChatMember chatMember = exec(new GetChatMember(chatId, userId)).chatMember();
 		return
 				chatMember != null &&
 				UserPermissionLevel.as(chatMember.status()).hasPermission(UserPermissionLevel.as(permissionLevel));
