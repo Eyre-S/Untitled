@@ -5,7 +5,11 @@ import com.pengrad.telegrambot.model.Chat;
 import com.pengrad.telegrambot.model.ChatMember;
 import com.pengrad.telegrambot.model.User;
 import com.pengrad.telegrambot.model.ChatMember.Status;
+import com.pengrad.telegrambot.request.BaseRequest;
 import com.pengrad.telegrambot.request.GetChatMember;
+import com.pengrad.telegrambot.response.BaseResponse;
+
+import cc.sukazyo.untitled.telegram.api.event.EventRuntimeException;
 
 public class ExtraAction {
 	
@@ -20,11 +24,32 @@ public class ExtraAction {
 	}
 	
 	public boolean isUserInGroup (User user, Chat chat) {
-		return isUserInGroup(user, chat, Status.restricted);
+		return isUserInGroup(user.id(), chat.id());
+	}
+	
+	public <T extends BaseRequest<T, R>, R extends BaseResponse> R exec (T req) {
+		return exec(req, "");
+	}
+	
+	public <T extends BaseRequest<T, R>, R extends BaseResponse> R exec (T req, String errorMessage) {
+		final R resp = bot.execute(req);
+		if (!resp.isOk()) throw new EventRuntimeException.ActionFailed(
+				(errorMessage.equals("") ? String.valueOf(resp.errorCode()) : errorMessage),
+				resp
+		);
+		return resp;
 	}
 	
 	public boolean isUserInGroup (User user, Chat chat, Status permissionLevel) {
-		final ChatMember chatMember = bot.execute(new GetChatMember(chat.id(), user.id())).chatMember();
+		return isUserInGroup(user.id(), chat.id(), permissionLevel);
+	}
+	
+	public boolean isUserInGroup (long userId, long chatId) {
+		return isUserInGroup(userId, chatId, Status.restricted);
+	}
+	
+	public boolean isUserInGroup (long userId, long chatId, Status permissionLevel) {
+		final ChatMember chatMember = bot.execute(new GetChatMember(chatId, userId)).chatMember();
 		return
 				chatMember != null &&
 				UserPermissionLevel.as(chatMember.status()).hasPermission(UserPermissionLevel.as(permissionLevel));
