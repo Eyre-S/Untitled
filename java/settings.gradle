@@ -6,6 +6,7 @@ include 'util-string-commons'
 include 'util-command-parser'
 include 'util-telegram-commons'
 include 'util-telegram-api'
+include 'util-telegram-api-formatter'
 include 'rubik-cube-simulator'
 include 'random'
 
