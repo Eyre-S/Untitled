@@ -12,8 +12,9 @@ public class UntModuleCubeLawCyclePeriod implements IModule {
 	@Override
 	public IExitStatus execute () {
 		System.out.print(UntitledTexts.getText("module.things.cube.cycle-period.input-prompt"));
+		final String law = new Scanner(System.in).nextLine();
 		System.out.print(UntitledTexts.getText("module.things.cube.cycle-period.running"));
-		int result = ThreeOrderRubikCube.calcLawCyclePeriod(new Scanner(System.in).nextLine());
+		int result = ThreeOrderRubikCube.calcLawCyclePeriod(law);
 		StringR.deleteChars(UntitledTexts.getText("module.things.cube.cycle-period.running").length());
 		System.out.println(
 				UntitledTexts.getText("module.things.cube.cycle-period.result") +

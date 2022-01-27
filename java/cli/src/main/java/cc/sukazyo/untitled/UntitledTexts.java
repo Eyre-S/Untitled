@@ -26,7 +26,8 @@ public class UntitledTexts {
 	static { texts.put("module.util.web.test.failed", "===\nFAILED REQUEST\n==="); }
 	
 	public static String getText (String key) {
-		return texts.get(key);
+		if (texts.containsKey(key)) return texts.get(key);
+		else return "${"+key+"}";
 	}
 	
 }
